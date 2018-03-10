@@ -9,15 +9,17 @@ Poke around different news organization folders and view any file containing "_p
 Github doesn't allow large files (>50mb or so) so the original g-zipped tarball was split into multiple "chunk_*" pieces using split. Hence each chunk_* file is a piece of a gzipped tar archive of the replication data, Replication.tar.gz.
 To reassemble the gzipped tar archive Replication.tar.gz, use this command in a linux environment.
 * cat chunk_* > Replication.tar.gz
+
 Hash the file to verify it hasn't been modified:
 * sha256sum Replication.tar.gz
+
 Make sure it equals bc2c4e0ff9ff28a351f4f5694bfcac43551845bddcc3ed99be878e67bcabdba3
 Unzip/untar the gzipped tar archive using:
 * tar -xvzf Replication.tar.gz
 
 All together:
 1. cat chunk_* > Replication.tar.gz
-2. sha256sum Replication.tar.gz  #must equal bc2c4e0ff9ff28a351f4f5694bfcac43551845bddcc3ed99be878e67bcabdba3
+2. sha256sum Replication.tar.gz  #must equal bc2c4...bcabdba3
 3. tar -xvzf Replication.tar.gz
 
 ### Directory
