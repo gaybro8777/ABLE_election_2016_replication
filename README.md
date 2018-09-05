@@ -1,45 +1,45 @@
-### About
-This repo contains replication data and visuals for a pending paper on online misinformation and bias during the 2016 presidential election. The data encompasses all news content distributed per specific news organizations and specific topics. This data is provided purely for research and verification purposes. Everything in this repo is subject to change, and really needs to be moved off github to a public store for large files.
+# ABLE/Sentinel 2016 Election Replication Data
 
-### TLDR
-Follow the reassembly steps below, then open ABLE_Results_1_18_18/GoogleLongTermSentimentT3T4Weekly.png. This is the long-term anti-conservative partisan bias of Google News over 6/2011-6/2017. There are histograms as well; these are the link counts per the topics listed in the file name, and show the source bias of Google News.
-Poke around different news organization folders and view any file containing "_ppmi_smoothed_2wk_avg.png" but ignore any containing "expected" in the name. These files demonstrate the partisan variation in news reporting per these organizations using temporal sentiment analysis of their content. These plots show the strategic political communication patterns of different orgs, which are clearly evident.
+![](googlenews_rnc_liberals_ppmi_smoothed_2bin_avg.png)
+*A time series of Google-News' partisan content bias, 6-2011 thru 8-2018, generated using Sentinel and ppmi sentiment analysis of all content referring to 'democrat' or 'republican' topic terms. The results demonstrate substantial anti-conservative bias and information/election tampering.*
 
-### Reassembly
-Github doesn't allow large files (>50mb or so) so the original g-zipped tarball was split into multiple "chunk_*" pieces using split. Hence each chunk_* file is a piece of a gzipped tar archive of the replication data, Replication.tar.gz.
-To reassemble the gzipped tar archive Replication.tar.gz, use this command in a linux environment.
-> cat chunk_* > Replication.tar.gz
+## Description
+This repo contains result replication data for several analyses of the distribution of partisan/candidate/link bias of online media content during the 2016 election. The files prefixed with 'chunk' are pieces of a zip file named 2016_Election_Data.zip, which contains a dump of all reproduction data and a collection of visuals for the analyses detailed in "LexicalMisinformationAndBiasDetection.docx".
 
-Hash the file to verify it hasn't been modified:
-> sha256sum Replication.tar.gz
+## Data reassembly
+###	On linux:
+To reassemble the 'chunk' files in data/ into the original file, use:
+	cat chunk* > 2016_Election_Data.zip
+	unzip 2016_Election_Data.zip
 
-Make sure it equals bc2c4e0ff9ff28a351f4f5694bfcac43551845bddcc3ed99be878e67bcabdba3
+###	On windows:
+To reassemble the chunk files into the original file, use the 'type' command, listing all of the file parameters, as:
+	type chunk_aa chunk_ab chunk_ac chunk_ad chunk_ae chunk_af chunk_ag chunk_ah chunk_ai > 2016_Election_Data.zip
+Then unzip the file by right-clicking and selecting 'uncompress'/'unzip'.
 
-Unzip/untar the gzipped tar archive using:
-> tar -xvzf Replication.tar.gz
+## Data folder content
+	2016_Election_Data/
+		GoogleLinkAnalysis/
+			Visuals of the link distribution for the input topics in the file names for 2016. These distributions can be reproduced from the urls in the "repro_googlenews*" json files in the other folders. 
+		GoogleSentimentAnalysis/
+			Contains visuals and reproduction data for a long-term sentiment analysis of Google-News.
+		Partisan_2016_Analysis/
+			Various visuals of content volume, content facebook share volume, sentiment analysis, and reproduction data for multiple online news organizations. These analyses were for the partisan topics listed in the file names.
+		Trump_Clinton_2016_Analysis/
+			The same layout as Partisan_2016_Analysis, but for the leading candidates in the 2016 election, Donald Trump and Hillary Clinton, and the respective volume, audience-share, and sentiment biases per these candidates for multiple organizations.
 
-All steps together:
-1. cat chunk_* > Replication.tar.gz
-2. sha256sum Replication.tar.gz  #must equal bc2c4...bcabdba3
-3. tar -xvzf Replication.tar.gz
 
-### Directory
-1. ABLE_Results_1_18_18: ABLE-ITEM data and results for a variety of news orgs: BBC, RT, NPR, CNN, etc.
-2. Harvard_Results_2_18_18: Replication content analyzed by ABLE-ITEM but sourced from the (Faris et al, 2017). This is not the full Harvard web news dataset, but rather the content items analyzed by ABLE-ITEM for specific topical queries.
+The four top-level folders contain automated output dumps of separate analyses, so visuals, json reproduction data, and other data have been dumped into the folder of their respective topical analysis. The json reproduction data are all prefixed by "repro". These files were stored per-analysis and per-organization, so for example the file "repro_wsj_republican_democrat_unfiltered.json" contains all 2016 web content from the WSJ containing topic term hits on 'democrat' or 'republican' (and some other topic terms). 
 
-### Files
-* .png: Visuals are self-explanatory, and display various volume metrics or sentiment analyses. The file names describe what query topics and/or method were used to produce them if the text in the visuals don't specify.
-* .py: These are replication files, for academic integrity and reproduction. These are the results of ABLE queries that were used as input for the analyses of the provided visuals. That is, for any of the visuals in this repo, I also stored the complete headline datasets that they were based upon.
+The associated "...filtered.json" file contains each file after filtering and text normalization, as detailed in "Using Textual Analysis to Detect Misinformation and Political Bias". The reproduction json file directly correspond with the analyses mentioned in the paper. After drilling into the json a few levels, each file contains a list of 'Headline' objects for an associated list of 'Topics', containing static fields like headline, description, datetime, share_count, etc.
 
-### Citation
-The Harvard data was derived from:
-	
-		Faris, Robert and Roberts, Hal and Etling, Bruce and Bourassa, Nikki and Zuckerman, Ethan and Benkler, Yochai, 
-		Partisanship, Propaganda, and Disinformation: Online Media and the 2016 U.S. Presidential Election (August 2017).
-		Berkman Klein Center Research Publication 2017-6. Available at SSRN: https://ssrn.com/abstract=3019414 
+## Disclaimer
+This dataset is subject to change if errors are found, but has been generated to the highest level of accuracy obtainable. If you find any errors, please make a pull request or submit an issue/bug.
 
-If you want to cite/use the Harvard data, use their data directly, which they've made available online, just search for the work cited above. The data posted in this repo is only a subset of specific topical hits, and is purely for verification.
+## LICENSES
+Visuals, methods, paper, (everything but the data): Copyright Jesse Waite, 2018, ABLE/Sentinel Project.
 
-Data in the ABLE_Results folder, was generated by me and can be cited separately. Other datasets per other topics/orgs can be generated for the orgs listed in the ABLE_Results folder, and can generate more, but it takes time and funds which I lack.
+Reproduction (json) data: MIT License.
 
-##### Except for the Harvard_Results_2_18_18 verification data, all contents of this repo are copyright Jesse Waite, 2016, 2017, 2018, including the methods portrayed.
+The replication data is for academic research, and you are free to use and analyze it as you like, with proper citation. Analysis of publicly-shared content data for the sake of public awareness, critique, and research is explicitly protected by Fair Use.
+
