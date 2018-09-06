@@ -9,12 +9,16 @@ This repo contains result replication data for several analyses of the distribut
 ## Data reassembly
 ###	On linux:
 To reassemble the 'chunk' files in data/ into the original file, use:
+```
 	cat chunk* > 2016_Election_Data.zip
 	unzip 2016_Election_Data.zip
+```
 
 ###	On windows:
 To reassemble the chunk files into the original file, use the 'type' command, listing all of the file parameters, as:
+	```
 	type chunk_aa chunk_ab chunk_ac chunk_ad chunk_ae chunk_af chunk_ag chunk_ah chunk_ai > 2016_Election_Data.zip
+	```
 Then unzip the file by right-clicking and selecting 'uncompress'/'unzip'.
 
 ## Data folder content
@@ -37,7 +41,7 @@ The associated "...filtered.json" file contains each file after filtering and te
 This dataset is subject to change if errors are found, but has been generated to the highest level of accuracy obtainable. If you find any errors, please make a pull request or submit an issue/bug.
 
 ## LICENSES
-Visuals, methods, paper, (everything but the data): Copyright Jesse Waite, 2018, ABLE/Sentinel Project.
+Visuals, methods, paper, (everything but the data): Copyright Jesse Waite, 2016, 2017, 2018, ABLE/Sentinel Project.
 
 Reproduction (json) data: MIT License.
 
