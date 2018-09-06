@@ -15,7 +15,7 @@ To reassemble the 'chunk' files in data/ into the original file, use:
 ```
 
 ###	On windows:
-To reassemble the chunk files into the original file, use the 'type' command, listing all of the file parameters, as:
+To reassemble the chunk files into the original file, use the 'type' command, listing all of the file parameters. I don't use windows and haven't tested this, but its something like:
 ```
 	type chunk_aa chunk_ab chunk_ac chunk_ad chunk_ae chunk_af chunk_ag chunk_ah chunk_ai > 2016_Election_Data.zip
 ```
