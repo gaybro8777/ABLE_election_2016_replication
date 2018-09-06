@@ -19,7 +19,7 @@ To reassemble the chunk files into the original file, use the 'type' command, li
 ```
 	type chunk_aa chunk_ab chunk_ac chunk_ad chunk_ae chunk_af chunk_ag chunk_ah chunk_ai > 2016_Election_Data.zip
 ```
-Then unzip the file by right-clicking and selecting 'uncompress'/'unzip'.
+Then unzip the file by right-clicking and selecting 'uncompress'/'unzip'. Please submit a bug/issue if the above command is incorrect or fails, and I'll correct the command.
 
 ## Data folder content
 	2016_Election_Data/
